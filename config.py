@@ -11,7 +11,7 @@ class Config:
     SILICONFLOW_API_URL = 'https://api.siliconflow.cn/v1/images/generations'
 
     # Flask 配置
-    PORT = int(os.getenv('FLASK_PORT', 5000))
+    PORT = int(os.getenv('FLASK_PORT', 5001))
     DEBUG = os.getenv('FLASK_DEBUG', 'false').lower() == 'true'
 
     # 数据存储
