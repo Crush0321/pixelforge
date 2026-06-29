@@ -1,0 +1,50 @@
+<div class="bg-dark-800 rounded-2xl p-8 border border-gray-800">
+    <h2 class="text-2xl font-bold mb-6">✨ AI 图片生成</h2>
+    <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-400 mb-2">提示词（支持中英文）</label>
+        <textarea id="promptInput" rows="4"
+            class="w-full bg-dark-900 border border-gray-700 rounded-xl px-4 py-3 focus:border-neon-blue focus:ring-1 focus:ring-neon-blue outline-none transition-colors resize-none"
+            placeholder="描述你想要生成的图片，例如：一只可爱的猫咪坐在阳光明媚的窗台上..."></textarea>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">选择模型</label>
+            <select id="modelSelect" class="w-full bg-dark-900 border border-gray-700 rounded-xl px-4 py-3 focus:border-neon-blue outline-none transition-colors appearance-none cursor-pointer">
+                {% for model in models %}
+                <option value="{{ model.id }}" {% if model.id == 'Kwai-Kolors/Kolors' %}selected{% endif %}>
+                    {{ model.name }} ({{ model.provider }})
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">图片尺寸</label>
+            <select id="sizeSelect" class="w-full bg-dark-900 border border-gray-700 rounded-xl px-4 py-3 focus:border-neon-blue outline-none transition-colors appearance-none cursor-pointer">
+                {% for size in sizes %}
+                <option value="{{ size.id }}" {% if size.id == '1024x576' %}selected{% endif %}>
+                    {{ size.name }} ({{ size.id }})
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">推理步数: <span id="stepsValue">25</span></label>
+            <input type="range" id="stepsRange" min="15" max="35" value="25"
+                class="w-full h-2 bg-dark-900 rounded-lg appearance-none cursor-pointer slider">
+            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                <span>15 (快速)</span>
+                <span>35 (精细)</span>
+            </div>
+        </div>
+    </div>
+    <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-400 mb-2">随机种子（可选，留空则随机）</label>
+        <input type="number" id="seedInput"
+            class="w-full md:w-48 bg-dark-900 border border-gray-700 rounded-xl px-4 py-3 focus:border-neon-blue outline-none transition-colors"
+            placeholder="例如: 42">
+    </div>
+    <button id="generateBtn"
+        class="w-full py-4 rounded-xl bg-gradient-to-r from-neon-blue to-neon-purple text-white font-bold text-lg hover:shadow-lg hover:shadow-neon-blue/30 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+        ✨ 开始生成
+    </button>
+</div>

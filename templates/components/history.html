@@ -1,0 +1,14 @@
+<div class="bg-dark-800 rounded-2xl p-8 border border-gray-800">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold">📜 最近生成</h2>
+        <button id="clearHistoryBtn" class="px-4 py-2 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-colors text-sm">
+            清空历史
+        </button>
+    </div>
+    <div id="historyGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+    <div id="historyEmpty" class="hidden text-center py-12 text-gray-500">
+        <p class="text-4xl mb-4">📭</p>
+        <p>暂无历史记录</p>
+        <p class="text-sm mt-2">生成的图片将显示在这里</p>
+    </div>
+</div>
